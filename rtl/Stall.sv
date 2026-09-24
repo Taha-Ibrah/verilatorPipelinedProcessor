@@ -26,8 +26,10 @@ module Stall(
     input logic EX_MEM_RegWrite,
     input logic [4:0] EX_MEM_Rd,
 
-    input logic [4:0] rn, //Instruction [9:5]
-    input logic [4:0] rm, //reg2loc ? Instruction[4:0] : Instruction[20:16]
+    // Source fields as wired by PipelinedProcessor. The signal names are legacy names:
+    // rn is the Reg2Loc-selected field, while rm is always instruction[9:5].
+    input logic [4:0] rn, //reg2loc ? Instruction[4:0] : Instruction[20:16]
+    input logic [4:0] rm, //Instruction[9:5]
 
     output logic stall
 );

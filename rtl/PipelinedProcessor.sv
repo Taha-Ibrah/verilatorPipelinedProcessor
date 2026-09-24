@@ -139,8 +139,10 @@ module PipelinedProcessor(
         end
     end
 
-    //Breaking up instruction field into respective register fields.
-    //ADD X1, X2, X3.        opcode[31:21] Rm[20:16] shamt[16:11] Rn[9:5] Rd[4:0]
+    // Break the instruction into register fields. The rm/rn signal names below are legacy:
+    // rm carries the first source field (instruction[9:5]), while rn carries the second
+    // Reg2Loc-selected source field. For an R-format instruction, that selected field is
+    // instruction[20:16].
     assign rd = IF_ID_instruction[4:0];
     assign rm = IF_ID_instruction[9:5];
     assign rn = reg2loc ? IF_ID_instruction[4:0] : IF_ID_instruction[20:16];

@@ -4,7 +4,7 @@
 # Execute this makefile from the object directory:
 #    make -f VPipelinedProcessor_testbench.mk
 
-default: sim_run
+default: VPipelinedProcessor_testbench
 
 ### Constants...
 # Perl executable (from $PERL, defaults to 'perl' if not set)
@@ -60,7 +60,7 @@ VPATH += $(VM_USER_DIR)
 
 
 ### Link rules... (from --exe)
-sim_run: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
+VPipelinedProcessor_testbench: $(VK_USER_OBJS) $(VK_GLOBAL_OBJS) $(VM_PREFIX)__ALL.a
 	$(LINK) $(LDFLAGS) $^ $(LOADLIBES) $(LDLIBS) $(LIBS) $(SC_LIBS) -o $@
 
 # Verilated -*- Makefile -*-

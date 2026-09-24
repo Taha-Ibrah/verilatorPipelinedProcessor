@@ -78,7 +78,7 @@ module singlecycle(
 
     //INSTRUCTION MEMORY IS INSTANTIATED IN PROCESSOR FILE****
     // Instruction memory
-    InstructionMemory imem(
+    InstructionMemory2 imem(
         .Instruction(instruction),    // Output instruction
         .ReadAddress(currentpc)       // Input PC address
     );
@@ -146,7 +146,7 @@ module singlecycle(
     NextPCLogic pc_logic(
         .NextPC(nextpc),              // Computed next PC
         .CurrentPC(currentpc),        // Current PC
-        .SignExtendImm(extimm),       // Branch immediate
+        .BranchTarget(currentpc + (extimm << 2)), // Branch target
         .Branch(branch),              // Conditional branch signal
         .ALUZero(zero),               // Zero flag
         .Uncondbranch(uncond_branch)  // Unconditional branch signal
